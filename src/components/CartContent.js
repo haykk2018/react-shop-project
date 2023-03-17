@@ -1,6 +1,6 @@
 import {CartItem} from "./CartItem";
 
-const CartContent = ({cartItems,removeFromBasket}) => {
+const CartContent = ({cartItems,removeFromBasket,incQuantity,decQuantity}) => {
     let totalPrice = 0;
 
     return <ul className='collection cart-content'>
@@ -8,7 +8,11 @@ const CartContent = ({cartItems,removeFromBasket}) => {
         {cartItems.length ?
             cartItems.map((i, index) => {
                 totalPrice += i.price.regularPrice * i.quantity;
-                return <CartItem {...i} removeFromBasket={removeFromBasket} key={index} />;
+                return <CartItem {...i}
+                                 removeFromBasket={removeFromBasket}
+                                 incQuantity={incQuantity}
+                                 decQuantity={decQuantity}
+                                 key={index} />;
             })
             : <li className='collection-item'>Cart empty</li>
         }

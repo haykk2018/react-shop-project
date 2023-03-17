@@ -42,11 +42,26 @@ const Main = () => {
         }
     };
 
-    /* remove from basket*/
+    /* remove from basket */
     const removeFromBasket = (mainId) => {
         const updatedCartItems = cartItems.filter(i => i.mainId !== mainId);
         setCartItems(updatedCartItems);
     };
+    /* increment basket item quantity */
+    const incQuantity = (mainId) => {
+        const updatedCartItems = cartItems.map(ci =>
+            ci.mainId === mainId ? {...ci, quantity: ci.quantity + 1} : ci
+        )
+        setCartItems(updatedCartItems);
+    };
+    /* decrement basket item quantity */
+    const decQuantity = (mainId) => {
+        const updatedCartItems = cartItems.map(ci =>
+            ci.mainId === mainId ? {...ci, quantity: ci.quantity - 1} : ci
+        )
+        setCartItems(updatedCartItems);
+    };
+
 
     return <div className="container">
         <span>Hello</span><span className="material-icons">waving_hand</span>
@@ -62,7 +77,7 @@ const Main = () => {
             <Item key={index} addToBasket={addToBasket} {...item}  />
         ))}
         <Cart {...cartItems} />
-        <CartContent cartItems={cartItems} removeFromBasket={removeFromBasket}/>
+        <CartContent cartItems={cartItems} removeFromBasket={removeFromBasket} incQuantity={incQuantity} decQuantity={decQuantity}/>
     </div>
 }
 
