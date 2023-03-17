@@ -12,7 +12,7 @@ function Item(props) {
 
     return <div className='card' id={id}>
         <div className='card-image'>
-            <img src={displayAssets[0].url} alt={displayName}/>
+            <img src={displayAssets[0].full_background} alt={displayName}/>
         </div>
         <div className='card-content'>
             <span className='card-title'>{displayName}</span>

@@ -8,7 +8,7 @@ const Header = () => {
                 <ul id='nav-mobile' className='right hide-on-med-and-down'>
                     <li>
                         <a
-                            href='https://github.com/michey85/react-shop'
+                            href='https://github.com/haykk2018/react-shop-project'
                             target='_blank'
                             rel='noreferrer'
                         >

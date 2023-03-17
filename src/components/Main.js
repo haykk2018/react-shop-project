@@ -63,22 +63,18 @@ const Main = () => {
     };
 
 
-    return <div className="container">
-        <span>Hello</span><span className="material-icons">waving_hand</span>
-        <div className="row">
-            <div className="col s12"><span
-                className="flow-text">This div is 12-columns wide on all screen sizes</span></div>
-            <div className="col s6 offset-s6"><span className="flow-text">6-columns (offset-by-6)</span></div>
-        </div>
-        {/*{console.log(items.map((item) => ({...item})))}*/}
-
-        {items.map((item, index) => (
-            //console.log(item)
-            <Item key={index} addToBasket={addToBasket} {...item}  />
-        ))}
-        <Cart {...cartItems} />
-        <CartContent cartItems={cartItems} removeFromBasket={removeFromBasket} incQuantity={incQuantity} decQuantity={decQuantity}/>
-    </div>
+    return <>
+        <main className='container content'>
+            <div className='items'>
+                {items.map((item, index) => (
+                    <Item key={index} addToBasket={addToBasket} {...item}  />
+                ))}
+            </div>
+            <Cart {...cartItems} />
+            <CartContent cartItems={cartItems} removeFromBasket={removeFromBasket} incQuantity={incQuantity}
+                         decQuantity={decQuantity}/>
+        </main>
+    </>
 }
 
 export default Main

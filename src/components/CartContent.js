@@ -1,9 +1,10 @@
 import {CartItem} from "./CartItem";
 
-const CartContent = ({cartItems,removeFromBasket,incQuantity,decQuantity}) => {
+const CartContent = ({cartItems, removeFromBasket, incQuantity, decQuantity}) => {
     let totalPrice = 0;
+    const hideCartContent = () => document.getElementById('cart').style.display = 'none';
 
-    return <ul className='collection cart-content'>
+    return <ul className='collection cart-content' id="cart">
         <li className='collection-item active'>Cart</li>
         {cartItems.length ?
             cartItems.map((i, index) => {
@@ -12,7 +13,7 @@ const CartContent = ({cartItems,removeFromBasket,incQuantity,decQuantity}) => {
                                  removeFromBasket={removeFromBasket}
                                  incQuantity={incQuantity}
                                  decQuantity={decQuantity}
-                                 key={index} />;
+                                 key={index}/>;
             })
             : <li className='collection-item'>Cart empty</li>
         }
@@ -20,7 +21,7 @@ const CartContent = ({cartItems,removeFromBasket,incQuantity,decQuantity}) => {
         <li className='collection-item'>
             <button className='btn btn-small yellow darken-4'>checkout</button>
         </li>
-        <i className='material-icons basket-close'> close </i>
+        <i className='material-icons basket-close' onClick={hideCartContent}> close </i>
     </ul>
 
 }
