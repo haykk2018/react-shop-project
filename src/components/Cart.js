@@ -1,11 +1,7 @@
 function Cart(props) {
-    // const { quantity = 0, handleBasketShow = Function.prototype } = props;
-    // const [quantity,setQuantity] = useState(Object.keys(props).length);
-    const quantity = Object.keys(props).length;
-     //setQuantity(Object.keys(props).length) ;
-    console.log(Object.keys(props).length);
-    console.log(props);
 
+    let quantity = 0;
+    Object.values(props).map((item) => quantity += item.quantity)
     return (
         <div className='cart blue darken-4 white-text'  // onClick={handleBasketShow}
         >

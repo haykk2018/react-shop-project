@@ -2,8 +2,9 @@ import {useEffect, useState} from "react";
 import {API_KEY, API_URL} from "../config";
 import {Item} from "./Item";
 import {Cart} from "./Cart";
+import {CartContent} from "./CartContent";
 
-function Main() {
+const Main = () => {
 
     const [items, setItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
@@ -19,8 +20,32 @@ function Main() {
 
     /* addToBasket Function */
     const addToBasket = (item) => {
-        console.log(item);
-        setCartItems([...cartItems, item]);
+
+        let already_exist_same = false;
+        if (cartItems.length) {
+
+            const updatedCartItems = cartItems.map((ci) => {
+                    // ci.mainId === item.mainId ? {...ci, quantity: ci.quantity + 1} : ci
+                    if (ci.mainId === item.mainId) {
+                        already_exist_same = true;
+                        return {...ci, quantity: ci.quantity + 1};
+                    } else {
+                        return ci
+                    }
+                }
+            )
+
+            if (already_exist_same) setCartItems(updatedCartItems)
+            else setCartItems([...cartItems, item])
+        } else {
+            setCartItems([...cartItems, item]);
+        }
+    };
+
+    /* remove from basket*/
+    const removeFromBasket = (mainId) => {
+        const updatedCartItems = cartItems.filter(i => i.mainId !== mainId);
+        setCartItems(updatedCartItems);
     };
 
     return <div className="container">
@@ -33,9 +58,11 @@ function Main() {
         {/*{console.log(items.map((item) => ({...item})))}*/}
 
         {items.map((item, index) => (
+            //console.log(item)
             <Item key={index} addToBasket={addToBasket} {...item}  />
         ))}
         <Cart {...cartItems} />
+        <CartContent cartItems={cartItems} removeFromBasket={removeFromBasket}/>
     </div>
 }
 
