@@ -1,3 +1,8 @@
+import {useContext} from "react";
+import {ShopContext} from "../context";
+
+
+
 function CartItem(props) {
     const {
         displayName,
@@ -10,7 +15,7 @@ function CartItem(props) {
     } = props;
     return <>
         <li className='collection-item'>
-            {displayName}{' '}
+            {displayName}{' ' + useContext(ShopContext).testContext}
             <i className='material-icons basket-quantity' onClick={() => decQuantity(mainId)}> remove </i>
             {' x' + quantity + ' '}
             <i className='material-icons basket-quantity' onClick={() => incQuantity(mainId)}> add </i>

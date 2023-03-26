@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import {API_KEY, API_URL} from "../config";
+import {CartContent} from "./CartContent";
 import {Item} from "./Item";
 import {Cart} from "./Cart";
-import {CartContent} from "./CartContent";
 
 const Main = () => {
 
