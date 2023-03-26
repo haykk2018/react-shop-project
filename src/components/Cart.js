@@ -5,13 +5,10 @@ function Cart(props) {
 
     const showCartContent = () => document.getElementById('cart').style.display = 'block';
 
-    return (
-        <div className='cart blue darken-4 white-text'   onClick={showCartContent}
-        >
-            <i className='material-icons'>shopping_cart</i>
-            {quantity ? <span className='cart-quantity'>{quantity}</span> : ""}
-        </div>
-    );
+    return <div className='cart blue darken-4 white-text' onClick={showCartContent}>
+        <i className='material-icons'>shopping_cart</i>
+        <span className='cart-quantity'>{!!quantity && quantity}</span>
+    </div>;
 }
 
 export {Cart};

@@ -1,12 +1,9 @@
 function CartItem(props) {
     const {
-        id,
         displayName,
-        displayDescription,
         price,
         quantity,
         mainId,
-        displayAssets,
         incQuantity = Function.prototype,
         decQuantity = Function.prototype,
         removeFromBasket = Function.prototype,
