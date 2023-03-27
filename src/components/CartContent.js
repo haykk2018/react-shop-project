@@ -1,6 +1,10 @@
 import {CartItem} from "./CartItem";
+import {useContext} from "react";
+import {ShopContext} from "../context";
 
-const CartContent = ({cartItems, removeFromBasket, incQuantity, decQuantity}) => {
+const CartContent = ({removeFromBasket, incQuantity, decQuantity}) => {
+
+    const {cartItems} = useContext(ShopContext);
     let totalPrice = 0;
     const hideCartContent = () => document.getElementById('cart').style.display = 'none';
 
