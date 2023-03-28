@@ -2,7 +2,7 @@ import {CartItem} from "./CartItem";
 import {useContext} from "react";
 import {ShopContext} from "../context";
 
-const CartContent = ({removeFromBasket, incQuantity, decQuantity}) => {
+const CartContent = () => {
 
     const {cartItems} = useContext(ShopContext);
     let totalPrice = 0;
@@ -12,11 +12,7 @@ const CartContent = ({removeFromBasket, incQuantity, decQuantity}) => {
         <li className='collection-item active'>Cart</li>
         {cartItems.length ? cartItems.map((i, index) => {
             totalPrice += i.price.regularPrice * i.quantity;
-            return <CartItem {...i}
-                             removeFromBasket={removeFromBasket}
-                             incQuantity={incQuantity}
-                             decQuantity={decQuantity}
-                             key={index}/>;
+            return <CartItem {...i} key={index}/>;
         }) : <li className='collection-item'>Cart empty</li>}
         <li className='collection-item active'> Total amount: {totalPrice}$</li>
         <li className='collection-item'>

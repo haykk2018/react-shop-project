@@ -2,7 +2,7 @@ import {useContext} from "react";
 import {ShopContext} from "../context";
 
 function Item(props) {
-    const { addToBasket } = useContext(ShopContext);
+    const {addToBasket} = useContext(ShopContext);
     const {
         id,
         displayName,
